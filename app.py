@@ -29,7 +29,7 @@ def generate_token():
     # create a Sync grant and add to token
     sync_grant_access = SyncGrant(TWILIO_SYNC_SERVICE_SID)
     token.add_grant(sync_grant_access)
-    return jsonify(identity=username, token=token.to_jwt())
+    return jsonify(identity=username, token=token.to_jwt().decode())
 
 # Write the code here
 @app.route('/', methods=['POST'])
